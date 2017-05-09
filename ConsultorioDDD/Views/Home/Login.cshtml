@@ -1,0 +1,26 @@
+﻿@model Consultorio.Domain.Models.Usuario
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary()
+        </div>
+    }
+
+   @Html.AntiForgeryToken()
+  <div class="wrapper">
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Credenciais</h2>
+        @Html.TextBoxFor(u => u.Codigo, new { @class = "form-control", @placeholder = "Usuário" })
+        @Html.PasswordFor(u => u.Password, new { @class = "form-control", @placeholder = "Senha" })
+
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login" />
+    </div>
+</div>
+}

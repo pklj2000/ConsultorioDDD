@@ -1,0 +1,7 @@
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\bin\Debug\Consultorio.Common.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\bin\Debug\Consultorio.Common.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.csprojResolveAssemblyReference.cache
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.csproj.GenerateResource.Cache
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.ConsultorioMessages.resources

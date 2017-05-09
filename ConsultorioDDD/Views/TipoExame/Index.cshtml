@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Consultorio.Domain.Models.TipoExame>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+    @if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary()
+        </div>
+    }
+
+<h3>Tipos de Exames</h3>
+
+<p>
+    <input type="button" class="btn btn-primary" value="Novo Tipo de Exame" onclick="location.href='@Url.Action("Create", "TipoExame")'" />
+</p>
+<table class="table table stripped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <input type="button" class="btn btn-default" value="Editar"  onclick="location.href='@Url.Action("Edit", "TipoExame", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default btnExcluir" value="Excluir" data-target="#ItemDelete" data-toggle="modal" data-id="@item.Id"/>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!-- Modal -->
+<div id="ItemDelete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <p>Confirma a exclusão do registro</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnConfirmar" data-dismiss="modal">Excluir</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@Html.Hidden("id", "", new { @class = "hiddenid" })
+
+<script type="text/javascript">
+    $(document).on("click", ".btnExcluir", function () {
+        var passedID = $(this).data('id');
+
+        $(".hiddenid").val(passedID);
+    });
+
+    $(document).on("click", ".btnConfirmar", function () {
+        var passedID = $(".hiddenid").val();
+
+        window.location.href = '/TipoExame/Delete/' + passedID;
+    });
+</script>

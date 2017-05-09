@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5BCCB254-CFAE-4A79-9B91-3EE7A17AF931}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consultorio.Service</RootNamespace>
+    <AssemblyName>Consultorio.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\IDepartamentoService.cs" />
+    <Compile Include="Infrastructure\IEstadoCivilService.cs" />
+    <Compile Include="Infrastructure\ITipoExameService.cs" />
+    <Compile Include="Service\DepartamentoService.cs" />
+    <Compile Include="Service\EmpresaService.cs" />
+    <Compile Include="Infrastructure\IEmpresaService.cs" />
+    <Compile Include="Infrastructure\ILoginService.cs" />
+    <Compile Include="Infrastructure\IUsuarioService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\EstadoCivilService.cs" />
+    <Compile Include="Service\TipoExameService.cs" />
+    <Compile Include="Service\UsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Consultorio.Common\Consultorio.Common.csproj">
+      <Project>{eff8a03d-1349-46f5-bab9-716f4e4b0f37}</Project>
+      <Name>Consultorio.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Consultorio.Domain\Consultorio.Domain.csproj">
+      <Project>{6379e038-98d6-4566-bb49-62d6813bcfaf}</Project>
+      <Name>Consultorio.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Consultorio.Data.csproj">
+      <Project>{c1e1cfbb-a3a7-47b9-80e2-a901282e0fb6}</Project>
+      <Name>Consultorio.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

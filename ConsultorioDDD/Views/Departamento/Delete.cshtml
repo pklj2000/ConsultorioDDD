@@ -1,0 +1,19 @@
+﻿@model Consultorio.Domain.Models.Departamento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <h4>Confirma a exclusão do departamento @Html.DisplayFor(model => model.Descricao) ?</h4>
+</fieldset>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Excluir" class="btn btn-primary" />
+        <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Departamento", new { EmpresaId = Model.EmpresaId })'" />
+    </p>
+}

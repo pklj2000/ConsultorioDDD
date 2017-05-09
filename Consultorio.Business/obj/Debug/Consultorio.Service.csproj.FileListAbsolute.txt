@@ -1,0 +1,14 @@
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\obj\Debug\Consultorio.Service.csprojResolveAssemblyReference.cache
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Domain.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Infrastructure.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Common.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\EntityFramework.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Domain.pdb
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Infrastructure.pdb
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Infrastructure.dll.config
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Common.pdb
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Business\bin\Debug\EntityFramework.xml
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Service.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Business\bin\Debug\Consultorio.Service.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Business\obj\Debug\Consultorio.Service.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Business\obj\Debug\Consultorio.Service.pdb

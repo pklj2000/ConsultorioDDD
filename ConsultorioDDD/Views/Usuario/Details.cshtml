@@ -1,0 +1,77 @@
+﻿@model Consultorio.Domain.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Usuário</h3>
+<p>
+</p>
+<fieldset>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Codigo)</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Codigo)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Nome)</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Nome)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Ativo)</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@(Model.Ativo == 1 ? "Sim" : "Não") </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Email)</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Email)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Data do Último Acesso</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.DataUltimoAcesso)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Data Criação</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.AddedDate)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Data Atualização</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.ModifiedDate)</label>
+                    </div>
+                </div>
+            </form>
+        </div>  
+    </div>
+</fieldset>
+<p>
+    <input type="button" class="btn btn-primary" value="Editar" onclick="location.href='@Url.Action("Edit", "Usuario", new { id = Model.Id})'" />
+    <input type="button" class="btn btn-primary" value="Voltar" onclick="location.href='@Url.Action("Index", "Usuario", new { id = Model.Id })'" />
+</p>

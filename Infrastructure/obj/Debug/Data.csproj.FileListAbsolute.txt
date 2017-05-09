@@ -1,0 +1,1 @@
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Data.csprojResolveAssemblyReference.cache
