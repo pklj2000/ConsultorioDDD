@@ -5,3 +5,5 @@ C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.pdb
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.csproj.GenerateResource.Cache
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Consultorio.Common\obj\Debug\Consultorio.Common.ConsultorioMessages.resources
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Common\bin\Debug\Castle.Core.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Common\bin\Debug\Castle.Core.xml

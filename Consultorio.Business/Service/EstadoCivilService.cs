@@ -5,7 +5,7 @@ using Consultorio.Service.Infrastructure;
 using Consultorio.Data.Infrastructure;
 using Consultorio.Data.Repository;
 
-namespace Consultorio.Service.Service
+namespace Consultorio.Service
 {
     public class EstadoCivilService : IEstadoCivilService
     {

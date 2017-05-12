@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using Consultorio.Service.Infrastructure;
-using Consultorio.Service.Service;
+using Consultorio.Service;
 using Consultorio.Domain.Models;
 using System.Collections.Generic;
 using System;
@@ -10,6 +10,15 @@ namespace ConsultorioDDD.Controllers
     public class EstadoCivilController : Controller
     {
         IEstadoCivilService _service = new EstadoCivilService();
+
+        public EstadoCivilController(IEstadoCivilService service)
+        {
+            _service = service;
+        }
+
+        public EstadoCivilController():this(new EstadoCivilService())
+        {
+        }
 
         public ActionResult Index()
         {
@@ -41,14 +50,14 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 _service.Insert(estadoCivil);
-                _service.Save();
+                //_service.Save();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("EstadoCivilCreate", ex.Message);
             }
-            return View(estadoCivil);
+            return View("Create",estadoCivil);
         }
 
         public ActionResult Details(int? id)
