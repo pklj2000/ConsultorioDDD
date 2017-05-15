@@ -25,6 +25,7 @@ namespace Consultorio.Domain.Models
         public void Validate()
         {
             AssertionConcern.AssertArgumentNotNull(this.Descricao, "O campo Estado Civil é obrigatório");
+            AssertionConcern.AssertArgumentLength(this.Descricao, 1,200, "O campo Estado Civil é obrigatório");
             AssertionConcern.AssertArgumentRange(this.Ativo, 0, 1, "O campo ativo está fora do range 0/1");
         }
         #endregion

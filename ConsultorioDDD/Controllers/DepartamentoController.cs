@@ -1,27 +1,29 @@
 ﻿using System.Web.Mvc;
 using Consultorio.Domain.Models;
-using Consultorio.Service.Infrastructure;
-using Consultorio.Service;
 using System.Collections;
 using System;
+using Consultorio.Data.Context;
+using Consultorio.Data.Infrastructure;
+using Consultorio.Data;
 
 namespace ConsultorioDDD.Controllers
 {
     public class DepartamentoController : Controller
     {
-        IDepartamentoService _service = new DepartamentoService();
-        IEmpresaService _serviceEmpresa = new EmpresaService();
-
         public ActionResult Index(int? EmpresaId)
         {
             IEnumerable departamentos;
-            int _empresaId = EmpresaId.GetValueOrDefault();
+            int _empresaId = 0;
 
-            departamentos = _service.GetByEmpresa(_empresaId);
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                _empresaId = EmpresaId.GetValueOrDefault();
 
-            IEnumerable empresas = _serviceEmpresa.GetAll();
-            ViewBag.Empresas = new SelectList(empresas, "Id", "Nome", _empresaId);
+                departamentos = uow.Departamentos.GetByEmpresa(_empresaId);
 
+                IEnumerable empresas = uow.Empresas.GetAll();
+                ViewBag.Empresas = new SelectList(empresas, "Id", "Nome", _empresaId);
+            }
             ViewBag.EmpresaId = _empresaId;
 
             return View(departamentos);
@@ -29,9 +31,12 @@ namespace ConsultorioDDD.Controllers
 
         public ActionResult Create(int empresaId)
         {
-            IEmpresaService _serviceEmpresa = new EmpresaService();
-            Empresa _empresa = _serviceEmpresa.GetById(empresaId);
+            Empresa _empresa;
 
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                _empresa = uow.Empresas.GetById(empresaId);
+            }
 
             if (_empresa != null)
             {
@@ -51,8 +56,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Insert(departamento);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.Departamentos.Insert(departamento);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -66,7 +73,11 @@ namespace ConsultorioDDD.Controllers
         {
             Departamento departamento;
 
-            departamento = _service.GetById(id);
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                departamento = uow.Departamentos.GetById(id);
+            }
+
             if (departamento != null)
             {
                 return View(departamento);
@@ -85,8 +96,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Update(departamento);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.Departamentos.Update(departamento);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -101,7 +114,10 @@ namespace ConsultorioDDD.Controllers
             Departamento departamento;
             try
             {
-                departamento = _service.GetById(id);
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    departamento = uow.Departamentos.GetById(id);
+                }
             }
             catch (Exception ex)
             {
@@ -116,7 +132,10 @@ namespace ConsultorioDDD.Controllers
             Departamento departamento;
             try
             {
-                departamento = _service.GetById(id);
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    departamento = uow.Departamentos.GetById(id);
+                }
             }
             catch(Exception ex)
             {
@@ -132,8 +151,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Delete(departamento.Id);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.Departamentos.Delete(departamento.Id);
+                }
                 return RedirectToAction("Index");
             }
             catch(Exception ex)

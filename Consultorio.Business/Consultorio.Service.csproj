@@ -41,18 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\IDepartamentoService.cs" />
-    <Compile Include="Infrastructure\IEstadoCivilService.cs" />
-    <Compile Include="Infrastructure\ITipoExameService.cs" />
-    <Compile Include="Service\DepartamentoService.cs" />
-    <Compile Include="Service\EmpresaService.cs" />
-    <Compile Include="Infrastructure\IEmpresaService.cs" />
     <Compile Include="Infrastructure\ILoginService.cs" />
-    <Compile Include="Infrastructure\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\EstadoCivilService.cs" />
-    <Compile Include="Service\TipoExameService.cs" />
-    <Compile Include="Service\UsuarioService.cs" />
+    <Compile Include="Service\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Consultorio.Common\Consultorio.Common.csproj">

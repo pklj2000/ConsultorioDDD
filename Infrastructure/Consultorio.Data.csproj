@@ -72,8 +72,10 @@
     <Compile Include="Infrastructure\IDepartamentoRepository.cs" />
     <Compile Include="Infrastructure\IEmpresaRepository.cs" />
     <Compile Include="Infrastructure\IEstadoCivilRepository.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\ITipoExameRepository.cs" />
     <Compile Include="Infrastructure\IUsuarioRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201704282119147_inicial.cs" />
     <Compile Include="Migrations\201704282119147_inicial.Designer.cs">
       <DependentUpon>201704282119147_inicial.cs</DependentUpon>
@@ -127,8 +129,10 @@
     <Compile Include="Repository\DepartamentoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
     <Compile Include="Repository\EstadoCivilRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\TipoExameRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Consultorio.Domain\Consultorio.Domain.csproj">

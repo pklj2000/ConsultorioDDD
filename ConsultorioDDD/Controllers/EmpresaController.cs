@@ -3,24 +3,23 @@ using System.Net;
 using System.Data;
 using Consultorio.Domain.Models;
 using System.Collections;
-using Consultorio.Service.Infrastructure;
-using Consultorio.Service;
+using Consultorio.Data.Context;
 
 namespace Consultorio.Controllers
 {
     public class EmpresaController : Controller
-    {
-        IEmpresaService _service = new EmpresaService();
-
+    { 
         public ActionResult Index(string empresaNome)
         {
             IEnumerable empresas;
 
-            if (string.IsNullOrEmpty(empresaNome))
-                empresas = _service.GetAll();
-            else
-                empresas = _service.GetByNome(empresaNome);
-
+            using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
+            {
+                if (string.IsNullOrEmpty(empresaNome))
+                    empresas = uow.Empresas.GetAll();
+                else
+                    empresas = uow.Empresas.GetByNome(empresaNome);
+            }
             return View(empresas);
         }
 
@@ -29,9 +28,14 @@ namespace Consultorio.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            Empresa empresa;
             int empresaId = id.GetValueOrDefault();
 
-            Empresa empresa = _service.GetById(empresaId);
+            using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
+            {
+                empresa = uow.Empresas.GetById(empresaId);
+            }
+
             if (empresa == null)
                 return HttpNotFound();
 
@@ -50,12 +54,11 @@ namespace Consultorio.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
                 {
-                    _service.Insert(empresa);
-                    _service.Save();
-                    return RedirectToAction("Index");
+                    uow.Empresas.Insert(empresa);
                 }
+                return RedirectToAction("Index");
             }
             catch (DataException ex)
             {
@@ -68,16 +71,19 @@ namespace Consultorio.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
             int empresaId = id.GetValueOrDefault();
-            Empresa empresa = _service.GetById(empresaId);
-            if (empresa == null)
+            Empresa empresa;
+
+            using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
             {
-                return HttpNotFound();
+                empresa = uow.Empresas.GetById(empresaId);
             }
+
+            if (empresa == null)
+                return HttpNotFound();
+
             return View(empresa);
         }
 
@@ -85,8 +91,10 @@ namespace Consultorio.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Empresa empresa)
         {
-            _service.Delete(empresa.Id);
-            _service.Save();
+            using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
+            {
+                uow.Empresas.Delete(empresa.Id);
+            }
             return RedirectToAction("Index");
         }
 
@@ -98,7 +106,13 @@ namespace Consultorio.Controllers
             }
 
             int empresaId = id.GetValueOrDefault();
-            Empresa empresa = _service.GetById(empresaId);
+            Empresa empresa;
+
+            using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
+            {
+                empresa = uow.Empresas.GetById(empresaId);
+            }
+
             if (empresa == null)
             {
                 return HttpNotFound();
@@ -112,12 +126,11 @@ namespace Consultorio.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
                 {
-                    _service.Update(empresa);
-                    _service.Save();
-                    return RedirectToAction("Index");
+                    uow.Empresas.Update(empresa);
                 }
+                return RedirectToAction("Index");
             }
             catch (DataException)
             {

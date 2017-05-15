@@ -1,0 +1,5 @@
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Service.Test\bin\Debug\Consultorio.Service.Test.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Service.Test\bin\Debug\Consultorio.Service.Test.pdb
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Service.Test\obj\Debug\Consultorio.Service.Test.csprojResolveAssemblyReference.cache
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Service.Test\obj\Debug\Consultorio.Service.Test.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\Consultorio.Service.Test\obj\Debug\Consultorio.Service.Test.pdb

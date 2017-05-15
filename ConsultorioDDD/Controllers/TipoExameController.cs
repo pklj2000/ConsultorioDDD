@@ -5,18 +5,21 @@ using System.Web;
 using System.Web.Mvc;
 using Consultorio.Service;
 using Consultorio.Domain.Models;
+using Consultorio.Data;
+using Consultorio.Data.Context;
 
 namespace ConsultorioDDD.Controllers
 {
     public class TipoExameController : Controller
     {
-        TipoExameService _service = new TipoExameService();
-
         public ActionResult Index()
         {
             IEnumerable<TipoExame> tipoExame;
 
-            tipoExame = _service.GetAll();
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                tipoExame = uow.TipoExames.GetAll();
+            }
             return View(tipoExame);
         }
 
@@ -33,8 +36,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Insert(tipoExame);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.TipoExames.Insert(tipoExame);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -52,7 +57,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 tipoExameId = id.GetValueOrDefault();
-                tipoExame = _service.GetById(tipoExameId);
+
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    tipoExame = uow.TipoExames.GetById(tipoExameId);
+                }
 
                 if (tipoExame == null)
                     throw new Exception(string.Format("Erro ao obter dados do tipo de exame: {0}", tipoExameId));
@@ -74,7 +83,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 tipoExameId = id.GetValueOrDefault();
-                tipoExame = _service.GetById(tipoExameId);
+
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    tipoExame = uow.TipoExames.GetById(tipoExameId);
+                }
 
                 if (tipoExame == null)
                     throw new Exception(string.Format("Ocorreu um erro ao obter dados para o tipo de exame {0}", tipoExameId));
@@ -94,8 +107,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Update(tipoExame);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.TipoExames.Update(tipoExame);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -112,7 +127,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 tipoExameId = id.GetValueOrDefault();
-                _service.Delete(tipoExameId);
+
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.TipoExames.Delete(tipoExameId);
+                }
             }
             catch(Exception ex)
             {

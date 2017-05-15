@@ -2,26 +2,37 @@
 using System.Net;
 using System.Web.Mvc;
 using Consultorio.Domain.Models;
-using Consultorio.Service.Infrastructure;
-using Consultorio.Service;
+using System.Collections.Generic;
+using Consultorio.Data;
+using Consultorio.Data.Context;
 
 namespace ConsultorioDDD.Controllers
 {
     public class UsuarioController : Controller
     {
-        IUsuarioService _service = new UsuarioService();
-
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(_service.GetAll());
+            IEnumerable<Usuario> usuarios;
+
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                usuarios = uow.Usuarios.GetAll();
+            }
+
+            return View(usuarios);
         }
 
         // GET: Usuarios/Details/5
         public ActionResult Details(int? id)
         {
-            int usuarioId = id.GetValueOrDefault();
-            Usuario usuario = _service.GetById(usuarioId);
+            Usuario usuario;
+
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                usuario = uow.Usuarios.GetById(id.GetValueOrDefault());
+            }
+
             if (usuario == null)
             {
                 return HttpNotFound("Usuário não encontrado");
@@ -41,16 +52,13 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
-                    _service.Insert(usuario);
-                    _service.Save();
-                    return RedirectToAction("Index");
+                    uow.Usuarios.Insert(usuario);
                 }
-
-                return View(usuario);
+                return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("Usuario/Create", ex.Message);
                 return View(usuario);
@@ -60,7 +68,12 @@ namespace ConsultorioDDD.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
-            Usuario usuario = _service.GetById(id.GetValueOrDefault());
+            Usuario usuario;
+
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                usuario = uow.Usuarios.GetById(id.GetValueOrDefault());
+            }
 
             if(usuario == null)
             {
@@ -73,23 +86,22 @@ namespace ConsultorioDDD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
-                _service.Update(usuario);
-                _service.Save();
-                return RedirectToAction("Index");
+                uow.Usuarios.Update(usuario);
             }
-            return View(usuario);
+            return RedirectToAction("Index");
         }
 
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            Usuario usuario;
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                usuario = uow.Usuarios.GetById(id.GetValueOrDefault());
             }
-            Usuario usuario = _service.GetById(id.GetValueOrDefault());
+
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -102,8 +114,11 @@ namespace ConsultorioDDD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _service.Delete(id);
-            _service.Save();
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
+            {
+                uow.Usuarios.Delete(id);
+            }
+
             return RedirectToAction("Index");
         }
     }

@@ -4,13 +4,7 @@ using System.Collections.Generic;
 
 namespace Consultorio.Data.Infrastructure
 {
-    public interface ITipoExameRepository: IDisposable
+    public interface ITipoExameRepository: IRepository<TipoExame>
     {
-        IEnumerable<TipoExame> GetAll();
-        TipoExame GetById(int id);
-        void Insert(TipoExame tipoExame);
-        void Delete(int id);
-        void Update(TipoExame tipoExame);
-        void Save();
     }
 }

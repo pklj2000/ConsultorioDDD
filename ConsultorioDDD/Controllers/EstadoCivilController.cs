@@ -1,32 +1,24 @@
 ﻿using System.Web.Mvc;
-using Consultorio.Service.Infrastructure;
-using Consultorio.Service;
 using Consultorio.Domain.Models;
 using System.Collections.Generic;
 using System;
+using Consultorio.Data;
+using Consultorio.Data.Context;
 
 namespace ConsultorioDDD.Controllers
 {
     public class EstadoCivilController : Controller
     {
-        IEstadoCivilService _service = new EstadoCivilService();
-
-        public EstadoCivilController(IEstadoCivilService service)
-        {
-            _service = service;
-        }
-
-        public EstadoCivilController():this(new EstadoCivilService())
-        {
-        }
-
         public ActionResult Index()
         {
             IEnumerable<EstadoCivil> estadoCivil;
 
             try
             {
-                estadoCivil = _service.GetAll();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    estadoCivil = uow.EstadoCivis.GetAll();
+                }
             }
             catch(System.Exception ex)
             {
@@ -49,8 +41,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Insert(estadoCivil);
-                //_service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.EstadoCivis.Insert(estadoCivil);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -68,8 +62,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 estadoCivilId = id.GetValueOrDefault();
-                estadoCivil = _service.GetById(estadoCivilId);
 
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    estadoCivil = uow.EstadoCivis.GetById(estadoCivilId);
+                }
                 if (estadoCivil == null)
                     throw new Exception(string.Format("Erro ao obter dados do tipo de exame: {0}", estadoCivilId));
 
@@ -90,7 +87,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 estadoCivilId = id.GetValueOrDefault();
-                estadoCivil = _service.GetById(estadoCivilId);
+
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    estadoCivil = uow.EstadoCivis.GetById(estadoCivilId);
+                }
 
                 if (estadoCivil == null)
                     throw new Exception(string.Format("Ocorreu um erro ao obter dados para o tipo de exame {0}", estadoCivilId));
@@ -110,8 +111,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Update(estadoCivil);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.EstadoCivis.Update(estadoCivil);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -129,7 +132,11 @@ namespace ConsultorioDDD.Controllers
             try
             {
                 estadoCivilId = id.GetValueOrDefault();
-                estadoCivil = _service.GetById(estadoCivilId);
+
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    estadoCivil = uow.EstadoCivis.GetById(estadoCivilId);
+                }
 
                 if (estadoCivil == null)
                     throw new Exception(string.Format("Ocorreu um erro ao obter dados para o tipo de exame {0}", estadoCivilId));
@@ -149,8 +156,10 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
-                _service.Delete(estadoCivil.Id);
-                _service.Save();
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
+                {
+                    uow.EstadoCivis.Delete(estadoCivil.Id);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

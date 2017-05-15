@@ -76,9 +76,34 @@ namespace ConsultorioDDD_Test
 
             _service.Verify(x=> x.Insert(estadoCivil), Times.AtLeast(1));
              Assert.AreEqual("Index", result.RouteValues["action"]);
-
-
         }
 
+        [Test]
+        public void Controller_Save_EstadoCivil_err_Nome()
+        {
+
+            EstadoCivilController _controller;
+            var estadoCivil = new EstadoCivil()
+            {
+                Id = 0,
+                Descricao = "",
+                Ativo = 1,
+                AddedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+
+            };
+
+            Mock<IEstadoCivilService> _service = new Mock<IEstadoCivilService>();
+
+            _service.Setup(x => x.Insert(It.IsAny<EstadoCivil>())).Throws(new Exception("Descrição invalida"));
+            _controller = new EstadoCivilController(_service.Object);
+            _controller.ViewData.ModelState.Clear();
+
+            var result = (ViewResult)_controller.Create(estadoCivil);
+            
+            _service.Verify(x => x.Insert(estadoCivil), Times.AtLeast(1));
+            
+            Assert.IsTrue(_controller.ViewData.ModelState.Keys.Contains("EstadoCivilCreate"));
+        }
     }
 }

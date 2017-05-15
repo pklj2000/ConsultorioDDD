@@ -100,3 +100,5 @@ C:\Sistemas\Consultorio\ConsultorioDDD\ConsultorioDDD\bin\Microsoft.Owin.Host.Sy
 C:\Sistemas\Consultorio\ConsultorioDDD\ConsultorioDDD\bin\System.Web.Http.Owin.xml
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioDDD\bin\Consultorio.Service.dll
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioDDD\bin\Consultorio.Service.pdb
+C:\Sistemas\Consultorio\ConsultorioDDD\ConsultorioDDD\bin\nunit.framework.dll
+C:\Sistemas\Consultorio\ConsultorioDDD\ConsultorioDDD\bin\nunit.framework.xml

@@ -61,6 +61,9 @@
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -272,6 +275,10 @@
     <ProjectReference Include="..\Consultorio.Domain\Consultorio.Domain.csproj">
       <Project>{6379e038-98d6-4566-bb49-62d6813bcfaf}</Project>
       <Name>Consultorio.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Consultorio.Data.csproj">
+      <Project>{C1E1CFBB-A3A7-47B9-80E2-A901282E0FB6}</Project>
+      <Name>Consultorio.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

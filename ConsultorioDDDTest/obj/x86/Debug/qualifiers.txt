@@ -1,5 +1,0 @@
-AlternateForm=UNPLATED
-Language=PT
-Scale=200
-TargetSize=24
-Language=PT-BR
