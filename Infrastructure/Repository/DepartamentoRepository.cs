@@ -14,7 +14,7 @@ namespace Consultorio.Data.Repository
 
         public IEnumerable<Departamento> GetByEmpresa(int empresaId)
         {
-            throw new NotImplementedException();
+            return this.Find(x => x.EmpresaId == empresaId, o=>o.Descricao);
         }
     }
 }

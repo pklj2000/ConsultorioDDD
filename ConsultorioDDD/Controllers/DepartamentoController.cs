@@ -1,9 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using System.Collections.Generic;
 using Consultorio.Domain.Models;
-using System.Collections;
-using System;
 using Consultorio.Data.Context;
-using Consultorio.Data.Infrastructure;
 using Consultorio.Data;
 
 namespace ConsultorioDDD.Controllers
@@ -12,7 +11,7 @@ namespace ConsultorioDDD.Controllers
     {
         public ActionResult Index(int? EmpresaId)
         {
-            IEnumerable departamentos;
+            IEnumerable<Departamento> departamentos;
             int _empresaId = 0;
 
             using (var uow = new UnitOfWork(new ConsultorioContext()))
@@ -21,7 +20,7 @@ namespace ConsultorioDDD.Controllers
 
                 departamentos = uow.Departamentos.GetByEmpresa(_empresaId);
 
-                IEnumerable empresas = uow.Empresas.GetAll();
+                IEnumerable<Empresa> empresas = uow.Empresas.GetAll();
                 ViewBag.Empresas = new SelectList(empresas, "Id", "Nome", _empresaId);
             }
             ViewBag.EmpresaId = _empresaId;
@@ -59,6 +58,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Departamentos.Insert(departamento);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -99,6 +99,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Departamentos.Update(departamento);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -154,6 +155,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Departamentos.Delete(departamento.Id);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }

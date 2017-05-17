@@ -179,7 +179,9 @@
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoExameController.cs" />
+    <Compile Include="Controllers\TransacaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +252,12 @@
     <Content Include="Views\EstadoCivil\Edit.cshtml" />
     <Content Include="Views\EstadoCivil\Delete.cshtml" />
     <Content Include="Views\EstadoCivil\Details.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Transacao\Index.cshtml" />
+    <Content Include="Views\Transacao\Create.cshtml" />
+    <Content Include="Views\Transacao\Edit.cshtml" />
+    <Content Include="Views\Transacao\Details.cshtml" />
+    <Content Include="Views\Transacao\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

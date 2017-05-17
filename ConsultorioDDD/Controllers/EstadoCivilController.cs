@@ -44,6 +44,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.EstadoCivis.Insert(estadoCivil);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -114,6 +115,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.EstadoCivis.Update(estadoCivil);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -159,6 +161,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.EstadoCivis.Delete(estadoCivil.Id);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }

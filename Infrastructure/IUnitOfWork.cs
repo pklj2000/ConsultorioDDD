@@ -10,6 +10,7 @@ namespace Consultorio.Data
         IEstadoCivilRepository EstadoCivis { get; }
         ITipoExameRepository TipoExames { get; }
         IUsuarioRepository Usuarios { get; }
+        ITransacaoRepository Transacoes { get; }
         int Complete();
     }
 }

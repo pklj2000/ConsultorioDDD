@@ -13,7 +13,15 @@
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <div class="display-label">
-                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Nome)</label>
+                        <label class="col-sm-2 text-info">Código</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Id)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Nome</label>
                     </div>
                     <div class="col-sm-10">
                         <label class="control-label">@Html.DisplayFor(model => model.Nome)</label>
@@ -21,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <div class="display-label">
-                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Cidade)</label>
+                        <label class="col-sm-2 text-info">Cidade</label>
                     </div>
                     <div class="col-sm-10">
                         <label class="control-label">@Html.DisplayFor(model => model.Cidade)</label>
@@ -30,7 +38,7 @@
 
                 <div class="form-group">
                     <div class="display-label">
-                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Observacao)</label>
+                        <label class="col-sm-2 text-info">Observação</label>
                     </div>
                     <div class="col-sm-10">
                         <label class="control-label">@Html.DisplayFor(model => model.Observacao)</label>
@@ -39,16 +47,33 @@
 
                 <div class="form-group">
                     <div class="display-label">
-                        <label class="col-sm-2 text-info">@Html.DisplayNameFor(model => model.Ativo)</label>
+                        <label class="col-sm-2 text-info">Ativo</label>
                     </div>
                     <div class="col-sm-10">
                         <label class="control-label">@(Model.Ativo == 1 ? "Sim" : "Não")</label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Data Criação</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.AddedDate)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Data Atualização</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.ModifiedDate)</label>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </fieldset>
 <p>
-    <input type="button" class="btn btn-primary" value="Editar" onclick="location.href='@Url.Action("Edit", "Empresa", new { id = Model.CodEmpresa })'" />
-    <input type="button" class="btn btn-primary" value="Voltar" onclick="location.href='@Url.Action("Index", "Empresa", new { id = Model.CodEmpresa })'" />
+    <input type="button" class="btn btn-primary" value="Editar" onclick="location.href='@Url.Action("Edit", "Empresa", new { id = Model.Id })'" />
+    <input type="button" class="btn btn-primary" value="Voltar" onclick="location.href='@Url.Action("Index", "Empresa", new { id = Model.Id })'" />
 </p>

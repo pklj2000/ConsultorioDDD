@@ -33,7 +33,6 @@ namespace ConsultorioDDD.Controllers
                 if (ModelState.IsValid)
                 {
                     var _service = new LoginService();
-
                     if (_service.ValidatePassword(usuario.Codigo, usuario.Password))
                     {
                         FormsAuthentication.SetAuthCookie(usuario.Codigo, false);

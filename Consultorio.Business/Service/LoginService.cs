@@ -27,5 +27,14 @@ namespace Consultorio.Service
             string _passwordBase = String.IsNullOrEmpty(_usuario.Password) ? "" : _usuario.Password; 
             return _passwordBase == _password;
         }
+
+        public bool HasPermission(string usuario, string transaction)
+        {
+            if(usuario.ToLower() == "terama" && transaction == "Empresa:Visualizar")
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

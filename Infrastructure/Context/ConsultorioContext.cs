@@ -17,7 +17,7 @@ namespace Consultorio.Data.Context
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<TipoExame> TipoExame { get; set; }
         public DbSet<EstadoCivil> EstadoCivil { get; set; }
-
+        public DbSet<Transacao> Transacao { get; set; }
 
         public virtual void Commit()
         {
@@ -31,6 +31,7 @@ namespace Consultorio.Data.Context
             modelBuilder.Configurations.Add(new DepartamentoConfiguration());
             modelBuilder.Configurations.Add(new TipoExameConfiguration());
             modelBuilder.Configurations.Add(new EstadoCivilConfiguration());
+            modelBuilder.Configurations.Add(new TransacaoConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

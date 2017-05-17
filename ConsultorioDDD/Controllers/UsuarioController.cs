@@ -55,6 +55,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Usuarios.Insert(usuario);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -89,6 +90,7 @@ namespace ConsultorioDDD.Controllers
             using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
                 uow.Usuarios.Update(usuario);
+                uow.Complete();
             }
             return RedirectToAction("Index");
         }
@@ -117,6 +119,7 @@ namespace ConsultorioDDD.Controllers
             using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
                 uow.Usuarios.Delete(id);
+                uow.Complete();
             }
 
             return RedirectToAction("Index");

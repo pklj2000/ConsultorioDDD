@@ -39,6 +39,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.TipoExames.Insert(tipoExame);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -110,6 +111,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.TipoExames.Update(tipoExame);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -131,6 +133,7 @@ namespace ConsultorioDDD.Controllers
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.TipoExames.Delete(tipoExameId);
+                    uow.Complete();
                 }
             }
             catch(Exception ex)

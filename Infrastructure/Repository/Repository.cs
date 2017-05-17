@@ -41,7 +41,7 @@ namespace Consultorio.Data.Repository
 
         public IEnumerable<TEntity> Find<T>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T>> orderBy)
         {
-            return Context.Set<TEntity>().Where(predicate).OrderBy(orderBy);
+            return Context.Set<TEntity>().Where(predicate).OrderBy(orderBy).ToList();
         }
 
         public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)

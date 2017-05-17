@@ -7,6 +7,7 @@ using Consultorio.Data.Context;
 
 namespace Consultorio.Controllers
 {
+    [CustomAuthorize(Roles = "Empresa:Visualizar")]
     public class EmpresaController : Controller
     { 
         public ActionResult Index(string empresaNome)
@@ -42,6 +43,7 @@ namespace Consultorio.Controllers
             return View(empresa);
         }
 
+        [CustomAuthorize(Roles = "Empresa:Editar")]
         public ActionResult Create()
         {
             CarregarAtivo();
@@ -57,6 +59,7 @@ namespace Consultorio.Controllers
                 using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Empresas.Insert(empresa);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
@@ -94,6 +97,7 @@ namespace Consultorio.Controllers
             using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
             {
                 uow.Empresas.Delete(empresa.Id);
+                uow.Complete();
             }
             return RedirectToAction("Index");
         }
@@ -129,6 +133,7 @@ namespace Consultorio.Controllers
                 using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Empresas.Update(empresa);
+                    uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
