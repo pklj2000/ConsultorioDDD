@@ -12,9 +12,17 @@ namespace Consultorio.Data.Repository
         {
         }
 
+        public override void Insert(Empresa entity)
+        {
+            entity.Validate();
+            base.Insert(entity);
+        }
+
         public IEnumerable<Empresa> GetByNome(string nome)
         {
             return Context.Empresas.Where(x => x.Cidade.Contains(nome));
         }
+
+        
     }
 }

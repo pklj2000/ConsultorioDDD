@@ -11,6 +11,10 @@ namespace Consultorio.Data
         ITipoExameRepository TipoExames { get; }
         IUsuarioRepository Usuarios { get; }
         ITransacaoRepository Transacoes { get; }
+        IPerfilRepository Perfis { get; }
+        IRiscoRepository Riscos { get; }
+        IPeriodicidadeRepository Periodicidades { get; }
+        IExameRepository Exames { get; }
         int Complete();
     }
 }

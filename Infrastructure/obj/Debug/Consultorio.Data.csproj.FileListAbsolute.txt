@@ -37,3 +37,11 @@ C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.M
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v4.resources
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v5.resources
 C:\Sistemas\Consultorio\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v106.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v107.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v109.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1010.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1011.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1012.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1013.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1014.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1015.resources

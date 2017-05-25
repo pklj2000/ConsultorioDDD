@@ -12,5 +12,7 @@ namespace Consultorio.Data.Repository
         public EstadoCivilRepository(ConsultorioContext context):base(context)
         {
         }
+
+       
     }
 }

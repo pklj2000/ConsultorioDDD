@@ -55,3 +55,8 @@ textarea {
     vertical-align: middle;
     float: none;
 }
+
+hr.style1 {
+    border-top: 1px solid #AAAAAA;
+    width: 80%;
+}

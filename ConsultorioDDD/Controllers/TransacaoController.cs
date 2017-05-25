@@ -115,7 +115,7 @@ namespace Consultorio.Controllers
 
         public ActionResult Delete(int? id)
         {
-            Transacao _transacao;
+            Transacao _transacao=null;
             try
             {
                 using (var uow = new UnitOfWork(new ConsultorioContext()))

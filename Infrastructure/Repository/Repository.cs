@@ -16,14 +16,14 @@ namespace Consultorio.Data.Repository
             Context = context;
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
             // such as Courses or Authors, and we need to use the generic Set() method to access them.
             return Context.Set<TEntity>().Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             // Note that here I've repeated Context.Set<TEntity>() in every method and this is causing
             // too much noise. I could get a reference to the DbSet returned from this method in the 
@@ -49,36 +49,40 @@ namespace Consultorio.Data.Repository
             return Context.Set<TEntity>().SingleOrDefault(predicate);
         }
 
-        public void Insert(TEntity entity)
+        public virtual void Insert(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
         }
 
-        public void InsertRange(IEnumerable<TEntity> entities)
+        public virtual void InsertRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().AddRange(entities);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             Context.Set<TEntity>().Remove(Context.Set<TEntity>().Find(id));
         }
 
-        public void DeleteRange(IEnumerable<int> ids)
+        public virtual void DeleteRange(IEnumerable<int> ids)
         {
             foreach(int index in ids)
                 Context.Set<TEntity>().Remove(Context.Set<TEntity>().Find(index));
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             Context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void UpdateRange(IEnumerable<TEntity> entities)
+        public virtual void UpdateRange(IEnumerable<TEntity> entities)
         {
             Context.Entry(entities).State = System.Data.Entity.EntityState.Modified;
         }
 
+        public virtual void Update(TEntity entityOld, TEntity entityNew)
+        {
+            Context.Entry(entityOld).CurrentValues.SetValues(entityNew);
+        }
     }
 }

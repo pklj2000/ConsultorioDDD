@@ -1,0 +1,135 @@
+﻿@model Consultorio.Domain.Models.Exame
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary()
+    </div>
+}
+
+<h3>
+    Exames
+</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label">Descrição</label>
+                            </div>
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Descricao)
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="style1" />
+                    <br />
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label">Gerar Solicitação</label>
+                            </div>
+                            <div class="col-sm-1">
+                                @Html.CheckBoxFor(model => model.EmiteSolicitacaoExameCheck)
+                            </div>
+                            <div class="col-sm-9">
+                                (O médico pode solicitar durante a consulta independente desta opção)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Ativo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(model => model.AtivoCheck)
+                        </div>
+                    </div>
+                    <hr class="style1" />
+                    <br />
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Definir Periodicidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(model => model.EmitePorPeriodicidadeCheck)
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Periodicidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("PeriodicidadeId", (SelectList)ViewBag.Periodicidades, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </form>
+                <hr class="style1" />
+                <br />
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="display-label">
+                            <label class="control-label">Tipo de Exames</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        @{var i = 1;
+                        }
+                        @foreach (var item in ViewBag.TiposExames)
+                        {
+                            if (i % 5 == 0)
+                            {
+                                @Html.Raw("</div><div class=row> <div class=col-sm-2></div>");
+                            }
+                            <div class="col-sm-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="selectedTipoExames" value=@item.Id @(item.Assigned ? "checked" : "")>
+                                        @item.Descricao
+                                    </label>
+                                </div>
+                            </div>
+                            i++;
+                        }
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Exame")'" />
+                    </p>
+                </div>
+            </div>
+    </fieldset>
+                            }
+@section Scripts {
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var _checked = $('#EmitePorPeriodicidadeCheck').is(":checked");
+        $('#PeriodicidadeId').prop("disabled", !_checked);
+        if (!_checked) {
+            $('#PeriodicidadeId').prop('selectedIndex', -1);
+        }
+
+        $('#EmitePorPeriodicidadeCheck').change(function () {
+            var _checked = this.checked;
+            $('#PeriodicidadeId').prop("disabled", !_checked);
+            if (!_checked) {
+                $('#PeriodicidadeId').prop('selectedIndex', -1);
+            }
+        });
+    });
+</script>
+

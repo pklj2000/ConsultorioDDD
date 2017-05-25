@@ -1,5 +1,6 @@
 ﻿using Consultorio.Common.Validations;
 using System;
+using System.Collections.Generic;
 
 namespace Consultorio.Domain.Models
 {
@@ -12,6 +13,8 @@ namespace Consultorio.Domain.Models
         public string Objeto { get; set; }
         public int Ativo { get; set; }
         public bool AtivoCheck { get { return Ativo == 1; } set { Ativo = value ? 1 : 0 ; } }
+
+        public virtual ICollection<Perfil> Perfis { get; set; }
         #endregion
 
         #region ctor

@@ -13,8 +13,14 @@ namespace Consultorio.Data.Infrastructure
         
         public Usuario GetByCodigo(string codigo)
         {
-            return Context.Usuarios.Where(x => x.Codigo == codigo).FirstOrDefault();
+            return Context.Usuarios.Include("Perfis").Where(x => x.Codigo == codigo).FirstOrDefault();
         }
 
+        public override Usuario GetById(int id)
+        {
+            return Context.Usuarios.Include("Perfis").Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        
     }
 }

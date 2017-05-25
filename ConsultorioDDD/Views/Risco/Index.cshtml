@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Consultorio.Domain.Models.Risco>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary()
+    </div>
+}
+<h3>Riscos</h3>
+
+<p>
+    <input type="button" class="btn btn-primary" value="Novo Risco" onclick="location.href='@Url.Action("Create", "Risco")'" />
+</p>
+<table class="table table stripped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>Ativo</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+           <td>
+               @(item.Ativo == 1 ? "Sim" : "Não")
+            </td>
+            <td>
+                <div class="btn-group">
+                    <input type="button" class="btn btn-default" value="Editar" onclick="location.href='@Url.Action("Edit", "Risco", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Detalhes" onclick="location.href='@Url.Action("Detail", "Risco", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Excluir" onclick="location.href='@Url.Action("Delete", "Risco", new { id = item.Id })'" />
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

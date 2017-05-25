@@ -4,10 +4,12 @@ using System.Data;
 using Consultorio.Domain.Models;
 using System.Collections;
 using Consultorio.Data.Context;
+using System;
+using Consultorio.Data;
 
 namespace Consultorio.Controllers
 {
-    [CustomAuthorize(Roles = "Empresa:Visualizar")]
+    [CustomAuthorize(Roles = "Empresa:View")]
     public class EmpresaController : Controller
     { 
         public ActionResult Index(string empresaNome)
@@ -43,27 +45,28 @@ namespace Consultorio.Controllers
             return View(empresa);
         }
 
-        [CustomAuthorize(Roles = "Empresa:Editar")]
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         public ActionResult Create()
         {
             CarregarAtivo();
             return View();
         }
 
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Empresa empresa)
         {
             try
             {
-                using (var uow = new Data.UnitOfWork(new ConsultorioContext()))
+                using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Empresas.Insert(empresa);
                     uow.Complete();
                 }
                 return RedirectToAction("Index");
             }
-            catch (DataException ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", string.Format("Erro ao salvar empresa: {0}", ex.Message));
             }
@@ -71,6 +74,7 @@ namespace Consultorio.Controllers
             return View(empresa);
         }
 
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace Consultorio.Controllers
             return View(empresa);
         }
 
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Empresa empresa)
@@ -102,6 +107,7 @@ namespace Consultorio.Controllers
             return RedirectToAction("Index");
         }
 
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -124,6 +130,7 @@ namespace Consultorio.Controllers
             return View(empresa);
         }
 
+        [CustomAuthorize(Roles = "Empresa:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Empresa empresa)

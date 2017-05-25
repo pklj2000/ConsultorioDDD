@@ -1,0 +1,9 @@
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\ConsultorioTest.Domain.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\ConsultorioTest.Domain.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\Consultorio.Domain.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\Consultorio.Common.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\Consultorio.Domain.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\bin\Debug\Consultorio.Common.pdb
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\obj\Debug\ConsultorioTest.Domain.csprojResolveAssemblyReference.cache
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\obj\Debug\ConsultorioTest.Domain.dll
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\ConsultorioTest.Domain\obj\Debug\ConsultorioTest.Domain.pdb

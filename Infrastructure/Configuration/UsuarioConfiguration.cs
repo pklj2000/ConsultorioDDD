@@ -12,6 +12,8 @@ namespace Consultorio.Data.Configuration
             Property(x => x.Nome).IsRequired();
             Property(x => x.Nome).HasMaxLength(200);
             Ignore(x => x.AtivoCheck);
+
+            
         }
     }
 }

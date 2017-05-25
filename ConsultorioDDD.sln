@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consultorio.Data", "Infrast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consultorio.Service", "Consultorio.Business\Consultorio.Service.csproj", "{5BCCB254-CFAE-4A79-9B91-3EE7A17AF931}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultorioTest.Domain", "ConsultorioTest.Domain\ConsultorioTest.Domain.csproj", "{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,22 @@ Global
 		{5BCCB254-CFAE-4A79-9B91-3EE7A17AF931}.Release|x64.Build.0 = Release|Any CPU
 		{5BCCB254-CFAE-4A79-9B91-3EE7A17AF931}.Release|x86.ActiveCfg = Release|Any CPU
 		{5BCCB254-CFAE-4A79-9B91-3EE7A17AF931}.Release|x86.Build.0 = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|x64.Build.0 = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Debug|x86.Build.0 = Debug|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|ARM.Build.0 = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|x64.ActiveCfg = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|x64.Build.0 = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F44DB91-3DF5-4073-8A51-FD34F9D51FA3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

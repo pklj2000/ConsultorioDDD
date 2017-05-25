@@ -9,4 +9,5 @@ namespace Consultorio.Data.Infrastructure
     {
         IEnumerable<Departamento> GetByEmpresa(int empresaId);
     }
+
 }

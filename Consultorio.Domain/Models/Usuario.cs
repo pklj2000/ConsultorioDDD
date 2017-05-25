@@ -1,6 +1,7 @@
 ﻿using System;
 using Consultorio.Common;
 using Consultorio.Common.Validations;
+using System.Collections.Generic;
 
 namespace Consultorio.Domain.Models
 {
@@ -15,6 +16,8 @@ namespace Consultorio.Domain.Models
         public DateTime? DataUltimoAcesso { get; set; }
         public int Ativo { get; set; }
         public bool AtivoCheck { get { return Ativo == 1; } set { Ativo = value ? 1 : 0; } }
+
+        public virtual ICollection<Perfil> Perfis { get; set; }
         #endregion
 
         public Usuario()

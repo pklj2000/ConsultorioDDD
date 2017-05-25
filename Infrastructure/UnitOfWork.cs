@@ -17,6 +17,10 @@ namespace Consultorio.Data
             EstadoCivis = new EstadoCivilRepository(_context);
             TipoExames = new TipoExameRepository(_context);
             Transacoes = new TransacaoRepository(_context);
+            Perfis = new PerfilRepository(_context);
+            Riscos = new RiscoRepository(_context);
+            Periodicidades = new PeriodicidadeRepository(_context);
+            Exames = new ExameRepository(_context);
         }
 
         public IEmpresaRepository Empresas { get; private set; }
@@ -25,6 +29,10 @@ namespace Consultorio.Data
         public ITipoExameRepository TipoExames { get; private set; }
         public IUsuarioRepository Usuarios { get; private set; }
         public ITransacaoRepository Transacoes { get; private set; }
+        public IPerfilRepository Perfis { get; private set; }
+        public IRiscoRepository Riscos { get; private set; }
+        public IPeriodicidadeRepository Periodicidades { get; private set; }
+        public IExameRepository Exames { get; private set; }
 
         public int Complete()
         {

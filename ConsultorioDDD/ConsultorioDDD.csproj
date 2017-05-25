@@ -177,7 +177,11 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
+    <Compile Include="Controllers\ExameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\PeriodicidadeController.cs" />
+    <Compile Include="Controllers\RiscoController.cs" />
     <Compile Include="Controllers\TipoExameController.cs" />
     <Compile Include="Controllers\TransacaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -258,6 +262,26 @@
     <Content Include="Views\Transacao\Edit.cshtml" />
     <Content Include="Views\Transacao\Details.cshtml" />
     <Content Include="Views\Transacao\Delete.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Perfil\Details.cshtml" />
+    <Content Include="Views\Perfil\Create.cshtml" />
+    <Content Include="Views\Perfil\Edit.cshtml" />
+    <Content Include="Views\Perfil\Delete.cshtml" />
+    <Content Include="Views\Risco\Index.cshtml" />
+    <Content Include="Views\Risco\Create.cshtml" />
+    <Content Include="Views\Risco\Edit.cshtml" />
+    <Content Include="Views\Risco\Delete.cshtml" />
+    <Content Include="Views\Risco\Detail.cshtml" />
+    <Content Include="Views\Periodicidade\Index.cshtml" />
+    <Content Include="Views\Periodicidade\Create.cshtml" />
+    <Content Include="Views\Periodicidade\Edit.cshtml" />
+    <Content Include="Views\Periodicidade\Details.cshtml" />
+    <Content Include="Views\Periodicidade\Delete.cshtml" />
+    <Content Include="Views\Exame\Index.cshtml" />
+    <Content Include="Views\Exame\Create.cshtml" />
+    <Content Include="Views\Exame\Edit.cshtml" />
+    <Content Include="Views\Exame\Details.cshtml" />
+    <Content Include="Views\Exame\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

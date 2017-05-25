@@ -7,12 +7,14 @@
 <h3>
     Usuários
 </h3>
-@if (TempData["mensagemErro"] != null)
+
+@if (!Html.ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger" role="alert">
-        @TempData["mensagemErro"]
+        @Html.ValidationSummary()
     </div>
 }
+
 <br />
 <p>
     <input type="button" class="btn btn-primary" value="Novo Usuário"

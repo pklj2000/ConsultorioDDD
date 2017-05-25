@@ -10,7 +10,7 @@ namespace Consultorio.Data.Configuration
             ToTable("Empresa");
             HasKey(x => x.Id);
             Property(x => x.Id).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Nome).HasMaxLength(200);
+            Property(x => x.Nome).IsRequired().HasMaxLength(200);
             Property(x => x.Cidade).HasMaxLength(200);
             Ignore(x => x.AtivoCheck);
         }

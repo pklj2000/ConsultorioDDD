@@ -1,0 +1,103 @@
+﻿@model Consultorio.Domain.Models.Exame
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary()
+    </div>
+}
+
+<h3>
+    Exames
+</h3>
+    <fieldset>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Descrição</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="control-label"> @Html.DisplayFor(model => model.Descricao)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Gerar Solicitação</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <label class="control-label">@(Model.EmiteSolicitacaoExameCheck ? "Sim" : "Não")</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <label class="control-label">(O médico pode solicitar durante a consulta independente desta opção)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Ativo</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="control-label">@(Model.AtivoCheck ? "Sim" : "Não")</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Definir Periodicidade</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="control-label">@(Model.EmitePorPeriodicidadeCheck ? "Sim" : "Não")</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Definir Periodicidade</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="control-label"> @Html.DisplayFor(model => model.Periodicidade.Descricao)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="display-label">
+                                <label class="col-sm-2 control-label text-info">Tipo de Exames</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        @foreach (var item in @Model.TipoExame)
+                                        {
+                                            <span class="label label-default">@item.Descricao</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <p>
+                            <input type="submit" value="Salvar" class="btn btn-primary" />
+                            <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Exame")'" />
+                        </p>
+                </form>
+            </div>
+    </fieldset>
+
+@section Scripts {
+
+}
+

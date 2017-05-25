@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Consultorio.Domain.Models;
 using Consultorio.Service.Infrastructure;
-using Consultorio.Data.Infrastructure;
 using Consultorio.Common.Validations;
 using Consultorio.Data.Context;
 using Consultorio.Data;
+using System.Collections.Generic;
 
 namespace Consultorio.Service
 {
@@ -30,11 +29,14 @@ namespace Consultorio.Service
 
         public bool HasPermission(string usuario, string transaction)
         {
-            if(usuario.ToLower() == "terama" && transaction == "Empresa:Visualizar")
+            List<string> permissoes;
+
+            using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
-                return true;
+                permissoes = uow.Transacoes.GetTransacaoJanelaUsuario(usuario.ToUpper());
             }
-            return false;
+
+            return permissoes.Find(x => x.Equals(transaction)) != null;
         }
     }
 }

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using Consultorio.Domain.Models;
 using Consultorio.Data.Context;
 using Consultorio.Data;
+using Consultorio;
 
 namespace ConsultorioDDD.Controllers
 {
+    [CustomAuthorize(Roles = "Departamento:View")]
     public class DepartamentoController : Controller
     {
         public ActionResult Index(int? EmpresaId)
@@ -28,6 +30,7 @@ namespace ConsultorioDDD.Controllers
             return View(departamentos);
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         public ActionResult Create(int empresaId)
         {
             Empresa _empresa;
@@ -49,6 +52,7 @@ namespace ConsultorioDDD.Controllers
             return null;
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Departamento departamento)
@@ -69,6 +73,7 @@ namespace ConsultorioDDD.Controllers
             return View(departamento);
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         public ActionResult Edit(int id)
         {
             Departamento departamento;
@@ -90,6 +95,7 @@ namespace ConsultorioDDD.Controllers
             }
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Departamento departamento)
@@ -128,6 +134,7 @@ namespace ConsultorioDDD.Controllers
             return View(departamento);
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         public ActionResult Delete(int id)
         {
             Departamento departamento;
@@ -146,6 +153,7 @@ namespace ConsultorioDDD.Controllers
             return View(departamento);
         }
 
+        [CustomAuthorize(Roles = "Departamento:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Departamento departamento)

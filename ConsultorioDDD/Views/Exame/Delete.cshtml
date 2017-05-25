@@ -1,0 +1,21 @@
+﻿@model Consultorio.Domain.Models.Exame
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <h4>
+        Confirma a exclusão da Exame: @Html.DisplayFor(model => model.Descricao) ?
+    </h4>
+    @Html.HiddenFor(model => model.Id)
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Excluir" class="btn btn-primary" />
+        <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Exame")'" />
+    </p>
+}

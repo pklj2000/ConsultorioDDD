@@ -19,6 +19,7 @@ namespace Consultorio.Data.Infrastructure
             
         void Update(TEntity entity);
         void UpdateRange(IEnumerable<TEntity> entities);
+        void Update(TEntity entityOld, TEntity entityNew);
 
         void Delete(int id);
         void DeleteRange(IEnumerable<int> ids);

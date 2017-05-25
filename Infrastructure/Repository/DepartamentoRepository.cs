@@ -16,5 +16,7 @@ namespace Consultorio.Data.Repository
         {
             return this.Find(x => x.EmpresaId == empresaId, o=>o.Descricao);
         }
+
+        
     }
 }

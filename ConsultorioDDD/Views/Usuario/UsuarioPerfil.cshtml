@@ -32,15 +32,6 @@
                             Perfis
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label>
-                                    Sistema:
-                                </label>@Html.DropDownList("sistemaid", (SelectList)ViewBag.Sistemas, new { @class = "form-control", onchange = "this.form.submit();" })
-                                <label>
-                                    Módulo:
-                                </label>@Html.DropDownList("moduloid", (SelectList)ViewBag.Modulos, new { @class = "form-control", onchange = "this.form.submit();" })
-                                <br />
-                            </div>
                             <div class="row">
                                 <div class="col-md-5">
                                     <select multiple class="form-control" id="perfilDisponivel" name="perfilDisponivel">

@@ -10,8 +10,9 @@
 </fieldset>
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <p>
-        @Html.HiddenFor(model => model.CodTransacao)
+        @Html.HiddenFor(model => model.Id)
         <input type="submit" value="Excluir" class="btn btn-primary" />
         <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Transacao")'" />
     </p>
