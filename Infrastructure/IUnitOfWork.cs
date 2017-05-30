@@ -15,6 +15,9 @@ namespace Consultorio.Data
         IRiscoRepository Riscos { get; }
         IPeriodicidadeRepository Periodicidades { get; }
         IExameRepository Exames { get; }
+        ICargoRepository Cargo { get; }
+        ISituacaoFuncionarioRepository SituacaoFuncionario {get;}
+        IFuncionarioRepository Funcionario { get; }
         int Complete();
     }
 }

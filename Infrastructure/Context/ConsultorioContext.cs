@@ -22,6 +22,9 @@ namespace Consultorio.Data.Context
         public DbSet<Risco> Riscos { get; set; }
         public DbSet<Periodicidade> Periodicidade { get; set; }
         public DbSet<Exame> Exames { get; set; }
+        public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<SituacaoFuncionario> SituacaoFucionario { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
 
         public virtual void Commit()
         {
@@ -40,6 +43,9 @@ namespace Consultorio.Data.Context
             modelBuilder.Configurations.Add(new RiscoConfiguration());
             modelBuilder.Configurations.Add(new PeriodicidadeConfiguration());
             modelBuilder.Configurations.Add(new ExameConfiguration());
+            modelBuilder.Configurations.Add(new CargoConfiguration());
+            modelBuilder.Configurations.Add(new SituacaoFuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new FuncionarioConfiguration());
 
             //Usuario x Perfil 
             modelBuilder.Entity<Usuario>()
@@ -72,6 +78,28 @@ namespace Consultorio.Data.Context
                     te.MapLeftKey("ExameId");
                     te.MapRightKey("TipoExameId");
                     te.ToTable("ExameTipoExame");
+                });
+
+            //Cargo x Exames
+            modelBuilder.Entity<Cargo>()
+                .HasMany<Exame>(e => e.Exames)
+                .WithMany(c => c.Cargo)
+                .Map(ce =>
+                {
+                    ce.MapLeftKey("CargoId");
+                    ce.MapRightKey("ExameId");
+                    ce.ToTable("CargoExame");
+                });
+
+            //Cargo x Riscos
+            modelBuilder.Entity<Cargo>()
+                .HasMany<Risco>(r => r.Riscos)
+                .WithMany(c => c.Cargo)
+                .Map(cr =>
+                {
+                    cr.MapLeftKey("CargoId");
+                    cr.MapRightKey("RiscoId");
+                    cr.ToTable("CargoRisco");
                 });
 
             base.OnModelCreating(modelBuilder);

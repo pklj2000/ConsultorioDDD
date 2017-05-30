@@ -38,6 +38,11 @@ namespace Consultorio.Domain.Models
             AssertionConcern.AssertArgumentLength(this.Nome, 200, ConsultorioMessages.NomeEmpresaInvalido);
             AssertionConcern.AssertArgumentRange(this.Ativo, 0, 1, ConsultorioMessages.AtivoInvalido);
         }
+
+        public override string ToString()
+        {
+            return this.Nome;
+        }
         #endregion
     }
 }

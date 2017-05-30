@@ -33,6 +33,11 @@ namespace Consultorio.Domain.Models
             AssertionConcern.AssertArgumentLength(this.Descricao, 200, "O campo Departamento é obrigatório");
             AssertionConcern.AssertArgumentRange(this.Ativo, 0, 1, ConsultorioMessages.AtivoInvalido);
         }
+
+        public override string ToString()
+        {
+            return this.Descricao;
+        }
         #endregion
     }
 }

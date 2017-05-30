@@ -20,6 +20,7 @@ namespace Consultorio.Domain.Models
 
         public virtual Periodicidade Periodicidade { get; set; }
         public virtual ICollection<TipoExame> TipoExame { get; set; }
+        public virtual ICollection<Cargo> Cargo { get; set; }
         #endregion  
 
         #region ctor

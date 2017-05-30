@@ -1,0 +1,191 @@
+﻿@model Consultorio.Domain.Models.Cargo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Departamento</h2>
+
+@using (Html.BeginForm())
+{
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary()
+        </div>
+    }
+
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        @Html.HiddenFor(model => model.Id)
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label ">Empresa</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("EmpresaId", (SelectList)ViewBag.Empresas, string.Empty, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label ">Departamento</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("DepartamentoId", (SelectList)ViewBag.Departamentos, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="control-label col-sm-2">Cargo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="control-label col-sm-2">Periodicidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("PeriodicidadeId", (SelectList)ViewBag.Periodicidades, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Ativo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(model => model.AtivoCheck)
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Exames
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <select multiple class="form-control" id="exameDisponivel" name="exameDisponivel">
+                                        @foreach (var item in ViewBag.Exames)
+                                        {
+                                            if (!item.Assigned)
+                                            {
+                                                <option value=@item.CodExame>@item.Descricao</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-default" onclick="adicionarItem(exameDisponivel, exameAssociado)">></button><br />
+                                    <button type="button" class="btn btn-default" onclick="adicionarItem(exameAssociado, exameDisponivel)"><</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <select multiple class="form-control" id="exameAssociado" name="exameAssociado"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Riscos
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <select multiple class="form-control" id="riscoDisponivel" name="riscoDisponivel">
+                                        @foreach (var item in ViewBag.Riscos)
+                                        {
+                                            if (!item.Assigned)
+                                            {
+                                                <option value=@item.CodRisco>@item.Descricao</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-default" onclick="adicionarItem(riscoDisponivel, riscoAssociado)">></button><br />
+                                    <button type="button" class="btn btn-default" onclick="adicionarItem(riscoAssociado, riscoDisponivel)"><</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <select multiple class="form-control" id="riscoAssociado" name="riscoAssociado"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Cargo", new { empresaId = Model.Id })'" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#EmpresaId").change(function () {
+            $("#DepartamentoId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDepartamento")', // we are calling json method
+
+                dataType: 'json',
+
+                data: { empresaId: $("#EmpresaId").val() },
+               // here we are get value of selected country and passing same value
+               //   as inputto json method GetStates.
+
+                success: function (departamento) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+
+                    $.each(departamento, function (i, departamento) {
+                        $("#DepartamentoId").append('<option value="' + departamento.Value + '">' +
+                            departamento.Text + '</option>');
+                    // here we are adding option for States
+
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>  
+
+<script type='text/javascript'>
+    function adicionarItem(selectbox1, selectbox2) {
+        var i;
+        for (i = selectbox1.options.length - 1; i >= 0; i--) {
+            if (selectbox1.options[i].selected) {
+                selectbox2.add(selectbox1.options[i]);
+            }
+        }
+        for (i = selectbox1.options.length - 1; i >= 0; i--) {
+            if (selectbox1.options[i].selected) {
+                selectbox1.remove(i);
+            }
+        }
+    }
+    function selectAll(selectbox) {
+        componente = document.getElementById(selectbox);
+        var i;
+        for (i = 0; i < componente.options.length; i++) {
+            componente.options[i].selected = true;
+        }
+    }
+</script>

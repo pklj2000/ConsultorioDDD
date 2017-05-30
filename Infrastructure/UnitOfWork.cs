@@ -21,6 +21,10 @@ namespace Consultorio.Data
             Riscos = new RiscoRepository(_context);
             Periodicidades = new PeriodicidadeRepository(_context);
             Exames = new ExameRepository(_context);
+            Cargo = new CargoRepository(_context);
+            SituacaoFuncionario = new SituacaoFuncionarioRepository(_context);
+            Funcionario = new FuncionarioRepository(_context);
+
         }
 
         public IEmpresaRepository Empresas { get; private set; }
@@ -33,6 +37,9 @@ namespace Consultorio.Data
         public IRiscoRepository Riscos { get; private set; }
         public IPeriodicidadeRepository Periodicidades { get; private set; }
         public IExameRepository Exames { get; private set; }
+        public ICargoRepository Cargo { get; private set; }
+        public ISituacaoFuncionarioRepository SituacaoFuncionario {get; private set;}
+        public IFuncionarioRepository Funcionario { get; private set; }
 
         public int Complete()
         {

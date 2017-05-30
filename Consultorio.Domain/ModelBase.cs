@@ -8,5 +8,6 @@ namespace Consultorio.Domain
         public DateTime AddedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public int UsuarioId { get; set; }
+
     }
 }

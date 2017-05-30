@@ -21,6 +21,15 @@ namespace ConsultorioDDD
 
             bundles.Add(new StyleBundle("~/Content/sitecss").Include(
                         "~/Content/Site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/momentjs").Include(
+                         "~/Scripts/moment.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
+                         "~/Scripts/bootstrap-datetimepicker.min.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/datepickercss").Include(
+                     "~/Content/bootstrap-datetimepicker-build.less"));
         }
     }
 }

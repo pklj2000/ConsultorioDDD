@@ -33,6 +33,11 @@ namespace Consultorio.Domain.Models
             AssertionConcern.AssertArgumentNotNull(this.ModifiedDate, "Data da última modificação não preenchida");
             AssertionConcern.AssertArgumentNotNull(this.UsuarioId, "Usuário responsável não preenchido");
         }
+
+        public override string ToString()
+        {
+            return this.Descricao;
+        }
         #endregion
     }
 }

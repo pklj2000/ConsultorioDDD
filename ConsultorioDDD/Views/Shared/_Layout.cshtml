@@ -10,6 +10,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrapjs")
 
+    @Scripts.Render("~/bundles/momentjs")
+    @Scripts.Render("~/bundles/datepickerjs")
+    @Scripts.Render("~/bundles/datepickercss")
+
     @RenderSection("Scripts", false)
 </head>
 <body>
@@ -52,6 +56,7 @@
                                 <li>@Html.ActionLink("Riscos", "", "Risco")</li>
                                 <li>@Html.ActionLink("Periodicidade", "", "Periodicidade")</li>
                                 <li>@Html.ActionLink("Exame", "", "Exame")</li>
+                                <li>@Html.ActionLink("Situação de Funcionário", "", "SituacaoFuncionario")</li>
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Grupo de perguntas", "", "PerguntaGrupo")</li>
                             </ul>

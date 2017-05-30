@@ -58,6 +58,7 @@
     <Compile Include="Models\ResultadoClinico.cs" />
     <Compile Include="Models\ResultadoProntuario.cs" />
     <Compile Include="Models\Risco.cs" />
+    <Compile Include="Models\SituacaoFuncionario.cs" />
     <Compile Include="Models\TipoExame.cs" />
     <Compile Include="Models\TipoPergunta.cs" />
     <Compile Include="Models\Transacao.cs" />

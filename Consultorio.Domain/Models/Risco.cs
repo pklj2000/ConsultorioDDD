@@ -12,7 +12,7 @@ namespace Consultorio.Domain.Models
         public int Ativo { get; set; }
         public bool AtivoCheck { get { return Ativo == 1; } set { Ativo = value ? 1 : 0; } }
 
-        //public virtual ICollection<Cargo> Cargos { get; set; }
+        public virtual ICollection<Cargo> Cargo { get; set; }
         #endregion
 
         #region ctor
