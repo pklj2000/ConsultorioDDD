@@ -60,7 +60,7 @@
                             <label class="control-label col-sm-2">Situação</label>
                         </div>
                         <div class="col-sm-10">
-                            @Html.DropDownList("SituacaoId", (SelectList)ViewBag.SituacaoFuncionario, new { @class = "form-control" })
+                            @Html.DropDownList("SituacaoFuncionarioId", (SelectList)ViewBag.SituacaoFuncionario, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="row form-group">
@@ -108,15 +108,24 @@
                             <label class="control-label col-sm-2">Sexo</label>
                         </div>
                         <div class="col-sm-10">
-                            @Html.DropDownList("SexoId", (SelectList)ViewBag.Sexos, new { @class = "form-control" })
+                            @Html.DropDownList("Sexo", (SelectList)ViewBag.Sexos, new { @class = "form-control" })
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="control-label col-sm-2">Estado Civil</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("EstadoCivilId", (SelectList)ViewBag.EstadoCivil, new { @class = "form-control" })
+                        </div>
+                    </div>
+
                     <div class="row form-group">
                         <div class="display-label">
                             <label class="control-label col-sm-2">Data Nascimento</label>
                         </div>
                         <div class="col-sm-10">
-                            @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control datepicker" })
+                            @Html.EditorFor(model => model.DataNascimento, new { @class = "form-control datepicker" })
                         </div>
                     </div>
                     <div class="row form-group">
@@ -124,7 +133,7 @@
                             <label class="control-label col-sm-2">Data Admissão</label>
                         </div>
                         <div class="col-sm-10">
-                            @Html.TextBoxFor(model => model.DataAdmissao, new { @class = "form-control datepicker" })
+                            @Html.EditorFor(model => model.DataAdmissao, new { @class = "form-control datepicker" })
                         </div>
                     </div>
                     <div class="row form-group">
@@ -132,7 +141,7 @@
                             <label class="control-label col-sm-2">Data Demissão</label>
                         </div>
                         <div class="col-sm-10">
-                            @Html.TextBoxFor(model => model.DataDemissao, new { @class = "form-control datepicker" })
+                            @Html.EditorFor(model => model.DataDemissao, new { @class = "form-control datepicker" })
                         </div>
                     </div>
                     <div class="row form-group">
@@ -201,14 +210,12 @@
             return false;
         });
 
-        $('.datepicker').datepicker({
-            startDate: '0d'
-        });
+        
     });
 </script>
 
-<script type='text/javascript'>
-    function adicionarItem(selectbox1, selectbox2) {
+        <script type='text/javascript'>
+            function adicionarItem(selectbox1, selectbox2) {
         var i;
         for (i = selectbox1.options.length - 1; i >= 0; i--) {
             if (selectbox1.options[i].selected) {
@@ -222,10 +229,10 @@
         }
     }
     function selectAll(selectbox) {
-        componente = document.getElementById(selectbox);
-        var i;
+                componente = document.getElementById(selectbox);
+            var i;
         for (i = 0; i < componente.options.length; i++) {
-            componente.options[i].selected = true;
+                componente.options[i].selected = true;
         }
     }
 </script>

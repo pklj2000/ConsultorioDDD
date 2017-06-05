@@ -1,5 +1,6 @@
 ﻿using Consultorio.Common.Validations;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Consultorio.Domain.Models
 {
@@ -19,10 +20,14 @@ namespace Consultorio.Domain.Models
         public string CargoAnterior { get; set; }
         public string Naturalidade { get; set; }
         public string Nacionalidade { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public DateTime DataAdmissao { get; set; }
-        public DateTime DataUltimoExame { get; set; }
-        public DateTime DataDemissao { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DataNascimento { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DataAdmissao { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DataUltimoExame { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DataDemissao { get; set; }
         public int Ativo { get; set; }
         public bool AtivoCheck { get { return Ativo == 1; } }
 
@@ -52,10 +57,10 @@ namespace Consultorio.Domain.Models
             AssertionConcern.AssertArgumentNotNull(this.DepartamentoId, "O campo Departamento é obrigatório");
             AssertionConcern.AssertArgumentNotNull(this.CargoId, "O campo Cargo é obrigatório");
             AssertionConcern.AssertArgumentNotNull(this.SituacaoFuncionarioId, "O campo Situação é obrigatório");
-            AssertionConcern.AssertArgumentNotNull(this.EstadoCivil, "O campo Estado Cívil é obrigatório");
+            AssertionConcern.AssertArgumentNotNull(this.EstadoCivilId, "O campo Estado Cívil é obrigatório");
             AssertionConcern.AssertArgumentNotNull(this.PeriodicidadeId, "O campo Periodicidade é obrigatório");
             AssertionConcern.AssertArgumentNotNull(this.Sexo, "O campo Sexo é obrigatório");
-            AssertionConcern.AssertArgumentMatches("/[FM]/g", this.Sexo, "O campo Sexo é inválido");
+            AssertionConcern.AssertArgumentMatches("^(?:F|M)$", this.Sexo, "O campo Sexo é inválido");
             AssertionConcern.AssertArgumentNotNull(this.Rg, "O campo RG é obrigatório");
             AssertionConcern.AssertArgumentNotNull(this.Ativo, "O campo Ativo é obrigatório");
         }

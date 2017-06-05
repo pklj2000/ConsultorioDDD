@@ -23,7 +23,7 @@ namespace ConsultorioDDD
                         "~/Content/Site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/momentjs").Include(
-                         "~/Scripts/moment.min.css"));
+                         "~/Scripts/moment-with-locales.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
                          "~/Scripts/bootstrap-datetimepicker.min.js"));

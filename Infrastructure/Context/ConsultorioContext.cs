@@ -25,6 +25,8 @@ namespace Consultorio.Data.Context
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<SituacaoFuncionario> SituacaoFucionario { get; set; }
         public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<PerguntaGrupo> Perguntagrupo { get; set; }
+        public DbSet<Pergunta> Pergunta { get; set; }
 
         public virtual void Commit()
         {
@@ -46,7 +48,10 @@ namespace Consultorio.Data.Context
             modelBuilder.Configurations.Add(new CargoConfiguration());
             modelBuilder.Configurations.Add(new SituacaoFuncionarioConfiguration());
             modelBuilder.Configurations.Add(new FuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new PerguntaGrupoConfiguration());
+            modelBuilder.Configurations.Add(new PerguntaConfiguration());
 
+            #region Many-to-many Relationships
             //Usuario x Perfil 
             modelBuilder.Entity<Usuario>()
                 .HasMany<Perfil>(p => p.Perfis)
@@ -101,6 +106,8 @@ namespace Consultorio.Data.Context
                     cr.MapRightKey("RiscoId");
                     cr.ToTable("CargoRisco");
                 });
+
+            #endregion
 
             base.OnModelCreating(modelBuilder);
         }

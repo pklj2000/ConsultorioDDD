@@ -182,6 +182,8 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\PerguntaController.cs" />
+    <Compile Include="Controllers\PerguntaGrupoController.cs" />
     <Compile Include="Controllers\PeriodicidadeController.cs" />
     <Compile Include="Controllers\RiscoController.cs" />
     <Compile Include="Controllers\SituacaoFuncionarioController.cs" />
@@ -381,6 +383,17 @@
     <Content Include="Views\SituacaoFuncionario\Delete.cshtml" />
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Funcionario\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Funcionario\Edit.cshtml" />
+    <Content Include="Views\Funcionario\Details.cshtml" />
+    <Content Include="Views\Funcionario\Delete.cshtml" />
+    <Content Include="Views\PerguntaGrupo\Index.cshtml" />
+    <Content Include="Views\PerguntaGrupo\Details.cshtml" />
+    <Content Include="Views\PerguntaGrupo\Create.cshtml" />
+    <Content Include="Views\PerguntaGrupo\Edit.cshtml" />
+    <Content Include="Views\PerguntaGrupo\Delete.cshtml" />
+    <Content Include="Views\Pergunta\Index.cshtml" />
+    <Content Include="Views\Pergunta\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

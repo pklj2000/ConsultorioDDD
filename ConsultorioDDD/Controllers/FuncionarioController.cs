@@ -197,12 +197,13 @@ namespace ConsultorioDDD.Controllers
         {
             try
             {
+                int _empresaId = funcionario.EmpresaId;
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
                     uow.Funcionario.Delete(funcionario.Id);
                     uow.Complete();
                 }
-                return RedirectToAction("Index", new { empresaId = funcionario.EmpresaId });
+                return RedirectToAction("Index", new { empresaId = _empresaId });
             }
             catch (Exception ex)
             {

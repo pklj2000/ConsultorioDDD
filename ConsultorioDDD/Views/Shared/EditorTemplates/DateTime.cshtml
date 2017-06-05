@@ -1,0 +1,10 @@
+﻿@model DateTime?
+       @Html.TextBox("",Model.HasValue && Model.Value != DateTime.MinValue ? Model.Value.ToString("dd/MM/yyyy") : String.Empty, new { @class = "form-control" })
+<script type="text/javascript">
+    $(document).ready(function() {
+        // target only the input in this editor template
+        $('#@Html.IdForModel()').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>

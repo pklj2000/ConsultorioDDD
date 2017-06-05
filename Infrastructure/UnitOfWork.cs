@@ -24,6 +24,8 @@ namespace Consultorio.Data
             Cargo = new CargoRepository(_context);
             SituacaoFuncionario = new SituacaoFuncionarioRepository(_context);
             Funcionario = new FuncionarioRepository(_context);
+            PerguntaGrupos = new PerguntaGrupoRepository(_context);
+            Perguntas = new PerguntaRepository(_context);
 
         }
 
@@ -40,6 +42,8 @@ namespace Consultorio.Data
         public ICargoRepository Cargo { get; private set; }
         public ISituacaoFuncionarioRepository SituacaoFuncionario {get; private set;}
         public IFuncionarioRepository Funcionario { get; private set; }
+        public IPerguntaGrupoRepository PerguntaGrupos { get; private set; }
+        public IPerguntaRepository Perguntas { get; private set; }
 
         public int Complete()
         {

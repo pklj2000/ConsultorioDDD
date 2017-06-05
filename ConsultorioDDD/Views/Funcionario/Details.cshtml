@@ -1,0 +1,193 @@
+﻿@model Consultorio.Domain.Models.Funcionario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Funcionário</h2>
+
+@using (Html.BeginForm())
+{
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary()
+        </div>
+    }
+
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        @Html.HiddenFor(model => model.Id)
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Código</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Id)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Empresa</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Empresa.Nome)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Departamento</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Departamento.Descricao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Cargo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Cargo.Descricao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Funcionário</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Nome)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Situação</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.SituacaoFuncionario.Descricao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Periodicidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Periodicidade.Descricao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">RG</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Rg)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Cargo Anterior</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.CargoAnterior)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Naturalidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Naturalidade)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Nacionalidade</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Nacionalidade)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Sexo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.Sexo)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Estado Civil</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.EstadoCivil.Descricao)</label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Data Nascimento</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.DataNascimento)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Data Admissão</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.DataAdmissao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Data Demissão</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.DataDemissao)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Ativo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@(Model.Ativo == 1 ? "Sim" : "Não") </label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Data Criação</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.AddedDate)</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 text-info">Data Atualização</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="control-label">@Html.DisplayFor(model => model.ModifiedDate)</label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Funcionario", new { empresaId = Model.Id })'" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
