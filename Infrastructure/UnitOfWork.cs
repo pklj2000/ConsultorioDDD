@@ -26,7 +26,8 @@ namespace Consultorio.Data
             Funcionario = new FuncionarioRepository(_context);
             PerguntaGrupos = new PerguntaGrupoRepository(_context);
             Perguntas = new PerguntaRepository(_context);
-
+            Profissionais = new ProfissionalRepository(_context);
+            Atendimentos = new AtendimentoRepository(_context);
         }
 
         public IEmpresaRepository Empresas { get; private set; }
@@ -44,6 +45,8 @@ namespace Consultorio.Data
         public IFuncionarioRepository Funcionario { get; private set; }
         public IPerguntaGrupoRepository PerguntaGrupos { get; private set; }
         public IPerguntaRepository Perguntas { get; private set; }
+        public IProfissionalRepository Profissionais { get; private set; }
+        public IAtendimentoRepository Atendimentos { get; private set; }
 
         public int Complete()
         {

@@ -80,7 +80,7 @@ namespace ConsultorioDDD.Controllers
         [CustomAuthorize(Roles = "Pergunta:Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Pergunta pergunta)
+        public ActionResult Create(Pergunta pergunta, int? grupoid)
         {
             using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
@@ -91,18 +91,23 @@ namespace ConsultorioDDD.Controllers
                     uow.Perguntas.Insert(pergunta);
                     uow.Complete();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { grupoid = grupoid.GetValueOrDefault() });
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", string.Format("Erro ao salvar grupo: {0}", ex.Message));
                 }
+
+                CarregarPerguntaGrupo(uow, grupoid.GetValueOrDefault());
+                CarregarTipoResposta();
+                CarregarRespostaObrigatoria();
+
                 return View(pergunta);
             }
         }
 
         [CustomAuthorize(Roles = "Pergunta:Edit")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int? grupoid)
         {
             Pergunta _pergunta;
 
@@ -110,6 +115,10 @@ namespace ConsultorioDDD.Controllers
             {
                 using (var uow = new UnitOfWork(new ConsultorioContext()))
                 {
+                    CarregarPerguntaGrupo(uow, grupoid.GetValueOrDefault());
+                    CarregarTipoResposta();
+                    CarregarRespostaObrigatoria();
+
                     _pergunta = uow.Perguntas.GetById(id.GetValueOrDefault());
                 }
                 return View(_pergunta);
@@ -117,14 +126,14 @@ namespace ConsultorioDDD.Controllers
             catch (Exception ex)
             {
                 TempData["ModelState"] = ex.Message;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { grupoid = grupoid });
             }
 
         }
 
         [CustomAuthorize(Roles = "Pergunta:Edit")]
         [HttpPost]
-        public ActionResult Edit(Pergunta pergunta)
+        public ActionResult Edit(Pergunta pergunta, int? grupoid)
         {
             using (var uow = new UnitOfWork(new ConsultorioContext()))
             {
@@ -135,7 +144,7 @@ namespace ConsultorioDDD.Controllers
                     uow.Perguntas.Update(pergunta);
                     uow.Complete();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { grupoid = grupoid });
                 }
                 catch (Exception ex)
                 {
@@ -167,7 +176,7 @@ namespace ConsultorioDDD.Controllers
 
         [CustomAuthorize(Roles = "Pergunta:Edit")]
         [HttpPost]
-        public ActionResult Delete(Pergunta pergunta)
+        public ActionResult Delete(Pergunta pergunta, int? grupoid)
         {
             try
             {
@@ -176,7 +185,7 @@ namespace ConsultorioDDD.Controllers
                     uow.Perguntas.Delete(pergunta.Id);
                     uow.Complete();
                 }
-                return RedirectToAction("Index", new { empresaId = pergunta });
+                return RedirectToAction("Index", new { grupoid = grupoid });
             }
             catch (Exception ex)
             {

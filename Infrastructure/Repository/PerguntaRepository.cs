@@ -17,5 +17,15 @@ namespace Consultorio.Data.Repository
         {
             return Context.Pergunta.Where(x => x.PerguntaGrupoId == grupoId).ToList();
         }
+
+        public override Pergunta GetById(int id)
+        {
+            var _pergunta = Context.Pergunta.Include("PerguntaGrupo").FirstOrDefault(x => x.Id == id);
+            var _tipoPergunta = new TipoPergunta().TiposPergunta[_pergunta.TipoRespostaId];
+
+            _pergunta.TipoResposta = new Dictionary<int, string>();
+            _pergunta.TipoResposta.Add(_pergunta.TipoRespostaId, _tipoPergunta);
+            return _pergunta;
+        }
     }
 }

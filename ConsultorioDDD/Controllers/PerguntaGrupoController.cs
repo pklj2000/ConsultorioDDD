@@ -146,7 +146,7 @@ namespace ConsultorioDDD.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ModelState"] = ex.Message;
+                TempData["ModelState"] =  ex.Message;
                 return RedirectToAction("Index");
             }
         }
@@ -162,11 +162,11 @@ namespace ConsultorioDDD.Controllers
                     uow.PerguntaGrupos.Delete(grupo.Id);
                     uow.Complete();
                 }
-                return RedirectToAction("Index", new { empresaId = grupo });
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("PerguntaGrupoDelete", ex.Message);
+                ModelState.AddModelError("PerguntaGrupoDelete", String.Format("Operação não foi concluída. Verifique se existem perguntas associadas: {0}", ex.Message));
                 return View(grupo);
             }
         }

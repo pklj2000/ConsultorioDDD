@@ -173,6 +173,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AtendimentoController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Controllers\PerguntaController.cs" />
     <Compile Include="Controllers\PerguntaGrupoController.cs" />
     <Compile Include="Controllers\PeriodicidadeController.cs" />
+    <Compile Include="Controllers\ProfissionalController.cs" />
     <Compile Include="Controllers\RiscoController.cs" />
     <Compile Include="Controllers\SituacaoFuncionarioController.cs" />
     <Compile Include="Controllers\TipoExameController.cs" />
@@ -394,6 +396,15 @@
     <Content Include="Views\PerguntaGrupo\Delete.cshtml" />
     <Content Include="Views\Pergunta\Index.cshtml" />
     <Content Include="Views\Pergunta\Create.cshtml" />
+    <Content Include="Views\Pergunta\Edit.cshtml" />
+    <Content Include="Views\Pergunta\Details.cshtml" />
+    <Content Include="Views\Pergunta\Delete.cshtml" />
+    <Content Include="Views\Profissional\Index.cshtml" />
+    <Content Include="Views\Profissional\Create.cshtml" />
+    <Content Include="Views\Profissional\Edit.cshtml" />
+    <Content Include="Views\Profissional\Delete.cshtml" />
+    <Content Include="Views\Profissional\Details.cshtml" />
+    <Content Include="Views\Atendimento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

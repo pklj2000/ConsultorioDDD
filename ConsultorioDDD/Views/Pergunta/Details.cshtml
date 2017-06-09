@@ -1,0 +1,76 @@
+﻿@model Consultorio.Domain.Models.Pergunta
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Pergunta</h3>
+<p>
+</p>
+<fieldset>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Grupo da Pergunta</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.PerguntaGrupo.Descricao)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Pergunta</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Descricao)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Sequencia</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.Sequencia)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Ativo</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@(Model.AtivoCheck ? "Sim" : "Não")</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Tipo Resposta</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.TipoResposta[Model.TipoRespostaId])</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Respostas</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@Html.DisplayFor(model => model.RespostaItem)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="display-label">
+                        <label class="col-sm-2 text-info">Res. Obrigatória</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label class="control-label">@(Model.RespostaObrigatoria == 1 ? "Sim" : "Não")</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</fieldset>
+<p>
+    <input type="button" class="btn btn-primary" value="Editar" onclick="location.href='@Url.Action("Edit", "Pergunta", new { grupoid = Model.Id})'" />
+    <input type="button" class="btn btn-primary" value="Voltar" onclick="location.href='@Url.Action("Index", "Pergunta", new { grupoid = Model.Id })'" />
+</p>

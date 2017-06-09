@@ -50,3 +50,4 @@ C:\Sistemas\Consultorio\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.M
 C:\Sistemas\Consultorio\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1018.resources
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1019.resources
 C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1020.resources
+C:\SISTEMAS\CONSULTORIO\ConsultorioDDD\Infrastructure\obj\Debug\Infrastructure.Migrations.v1021.resources

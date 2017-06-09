@@ -5,6 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary()
+    </div>
+}
 <fieldset>
     <h4> Confirma a exclusão do grupo de perguntas: @Html.DisplayFor(model => model.Descricao) ?</h4>
 </fieldset>

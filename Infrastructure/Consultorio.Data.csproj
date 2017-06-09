@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\AtendimentoConfiguration.cs" />
     <Compile Include="Configuration\CargoConfiguration.cs" />
     <Compile Include="Configuration\DepartamentoConfiguration.cs" />
     <Compile Include="Configuration\EmpresaConfiguration.cs" />
@@ -73,12 +74,14 @@
     <Compile Include="Configuration\PerguntaConfiguration.cs" />
     <Compile Include="Configuration\PerguntaGrupoConfiguration.cs" />
     <Compile Include="Configuration\PeriodicidadeConfiguration.cs" />
+    <Compile Include="Configuration\ProfissionalConfiguration.cs" />
     <Compile Include="Configuration\RiscoConfiguration.cs" />
     <Compile Include="Configuration\SituacaoFuncionarioConfiguration.cs" />
     <Compile Include="Configuration\TipoExameConfiguration.cs" />
     <Compile Include="Configuration\TransacaoConfiguration.cs" />
     <Compile Include="Configuration\UsuarioConfiguration.cs" />
     <Compile Include="Context\ConsultorioContext.cs" />
+    <Compile Include="Infrastructure\IAtendimentoRepository.cs" />
     <Compile Include="Infrastructure\ICargoRepository.cs" />
     <Compile Include="Infrastructure\IDepartamentoRepository.cs" />
     <Compile Include="Infrastructure\IEmpresaRepository.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Infrastructure\IPerfilRepository.cs" />
     <Compile Include="Infrastructure\IPerguntaRepository.cs" />
     <Compile Include="Infrastructure\IPeriodicidadeRepository.cs" />
+    <Compile Include="Infrastructure\IProfissionalRepository.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IRiscoRepository.cs" />
     <Compile Include="Infrastructure\ISituacaoFuncionarioRepository.cs" />
@@ -200,8 +204,13 @@
     <Compile Include="Migrations\201706041751334_v1.0.20.Designer.cs">
       <DependentUpon>201706041751334_v1.0.20.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706080124381_v1.0.21.cs" />
+    <Compile Include="Migrations\201706080124381_v1.0.21.Designer.cs">
+      <DependentUpon>201706080124381_v1.0.21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AtendimentoRepository.cs" />
     <Compile Include="Repository\CargoRepository.cs" />
     <Compile Include="Repository\DepartamentoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
@@ -212,6 +221,7 @@
     <Compile Include="Repository\PerguntaGrupoRepository.cs" />
     <Compile Include="Repository\PerguntaRepository.cs" />
     <Compile Include="Repository\PeriodicidadeRepository.cs" />
+    <Compile Include="Repository\ProfissionalRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RiscoRepository.cs" />
     <Compile Include="Repository\SituacaoFuncionarioRepository.cs" />
@@ -390,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706041751334_v1.0.20.resx">
       <DependentUpon>201706041751334_v1.0.20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706080124381_v1.0.21.resx">
+      <DependentUpon>201706080124381_v1.0.21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

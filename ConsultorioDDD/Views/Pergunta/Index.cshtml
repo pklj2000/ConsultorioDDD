@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (TempData["mensagemErro"] != null)
+@if (!Html.ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger" role="alert">
-        @TempData["mensagemErro"]
+        @Html.ValidationSummary()
     </div>
 }
 
@@ -57,9 +57,9 @@
             </td>
             <td>
                 <div class="btn-group">
-                    <input type="button" class="btn btn-default" value="Editar" onclick="location.href='@Url.Action("Edit", "Pergunta", new {grupoid = Url.RequestContext.RouteData.Values["grupoid"], id = item.Id })'" />
-                    <input type="button" class="btn btn-default" value="Detalhe" onclick="location.href='@Url.Action("Details", "Pergunta", new { grupoid = Url.RequestContext.RouteData.Values["grupoid"], id = item.Id })'" />
-                    <input type="button" class="btn btn-default" value="Excluir" onclick="location.href='@Url.Action("Delete", "Pergunta", new { grupoid = Url.RequestContext.RouteData.Values["grupoid"], id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Editar" onclick="location.href='@Url.Action("Edit", "Pergunta", new {grupoid = Request.Params["grupoid"], id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Detalhe" onclick="location.href='@Url.Action("Details", "Pergunta", new { grupoid = Request.Params["grupoid"], id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Excluir" onclick="location.href='@Url.Action("Delete", "Pergunta", new { grupoid = Request.Params["grupoid"], id = item.Id })'" />
                 </div>
             </td>
         </tr>

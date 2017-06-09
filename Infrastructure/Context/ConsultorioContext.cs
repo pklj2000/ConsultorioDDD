@@ -27,6 +27,8 @@ namespace Consultorio.Data.Context
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<PerguntaGrupo> Perguntagrupo { get; set; }
         public DbSet<Pergunta> Pergunta { get; set; }
+        public DbSet<Profissional> Profissionais { get; set; }
+        public DbSet<Atendimento> Atendimentos { get; set; }
 
         public virtual void Commit()
         {
@@ -50,6 +52,8 @@ namespace Consultorio.Data.Context
             modelBuilder.Configurations.Add(new FuncionarioConfiguration());
             modelBuilder.Configurations.Add(new PerguntaGrupoConfiguration());
             modelBuilder.Configurations.Add(new PerguntaConfiguration());
+            modelBuilder.Configurations.Add(new ProfissionalConfiguration());
+            modelBuilder.Configurations.Add(new AtendimentoConfiguration());
 
             #region Many-to-many Relationships
             //Usuario x Perfil 

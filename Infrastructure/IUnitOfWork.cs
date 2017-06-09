@@ -18,6 +18,8 @@ namespace Consultorio.Data
         ICargoRepository Cargo { get; }
         ISituacaoFuncionarioRepository SituacaoFuncionario {get;}
         IFuncionarioRepository Funcionario { get; }
+        IProfissionalRepository Profissionais { get; }
+        IAtendimentoRepository Atendimentos { get; }
         int Complete();
     }
 }

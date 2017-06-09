@@ -1,0 +1,91 @@
+﻿@model Consultorio.Domain.Models.Pergunta
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    Pergunta
+</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary()
+        </div>
+    }
+
+    <fieldset>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label ">Grupo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("PerguntaGrupoId", (SelectList)ViewBag.PerguntaGrupos, string.Empty, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Descrição</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Sequencia</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Sequencia, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Ativo</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(model => model.AtivoCheck)
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">Tipo Resposta</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("TipoRespostaId", (SelectList)ViewBag.TipoResposta, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">@Html.LabelFor(model => model.RespostaItem)</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(model => model.RespostaItem, 5, 55, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="display-label">
+                            <label class="col-sm-2 control-label">@Html.LabelFor(model => model.RespostaObrigatoria)</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("RespostaObrigatoria", (SelectList)ViewBag.RespostaObrigatoriaLista, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            <input type="button" class="btn btn-primary" value="Cancelar" onclick="location.href='@Url.Action("Index", "Pergunta", new { grupoid = Request.Params["grupoid"]})'" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
