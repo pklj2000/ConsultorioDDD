@@ -1,6 +1,7 @@
 ﻿using Consultorio.Common;
 using Consultorio.Common.Validations;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Consultorio.Domain.Models
 {
@@ -15,6 +16,7 @@ namespace Consultorio.Domain.Models
         public int TipoExameId { get; set; }
         public int Ativo { get; set; }
         public bool AtivoCheck { get { return Ativo == 1; } }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
         public DateTime DataAtendimento { get; set; }
 
         public virtual Empresa Empresa { get; set; }

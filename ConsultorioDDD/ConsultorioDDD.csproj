@@ -405,6 +405,9 @@
     <Content Include="Views\Profissional\Delete.cshtml" />
     <Content Include="Views\Profissional\Details.cshtml" />
     <Content Include="Views\Atendimento\Index.cshtml" />
+    <Content Include="Views\Atendimento\Create.cshtml" />
+    <Content Include="Views\Atendimento\Delete.cshtml" />
+    <Content Include="Views\Atendimento\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,17 +1,63 @@
-﻿
+﻿@model IEnumerable<Consultorio.Domain.Models.Atendimento>
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+<h3>Atendimentos</h3>
+@if (TempData["mensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["mensagemErro"]
     </div>
-</body>
-</html>
+}
+<br />
+
+<p>
+    <input type="button" class="btn btn-primary" value="Agendar Atendimento"
+           onclick="location.href='@Url.Action("Create", "Atendimento")'" />
+</p>
+
+<table class="table table stripped">
+    <tr>
+        <th>
+            Empresa
+        </th>
+        <th>
+            Funcionário
+        </th>
+        <th>
+            Tipo do Exame
+        </th>
+        <th>
+            Data Atendimento
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoExame.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAtendimento)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <input type="button" class="btn btn-default" value="Detalhe" onclick="location.href='@Url.Action("Details", "Atendimento", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default" value="Excluir" onclick="location.href='@Url.Action("Delete", "Atendimento", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-primary" value="Prontuário" onclick="location.href='@Url.Action("Create", "Prontuario", new { codAtendimento = item.Id })'" />
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

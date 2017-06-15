@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201706080124381_v1.0.21.Designer.cs">
       <DependentUpon>201706080124381_v1.0.21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706092346385_v1.0.22.cs" />
+    <Compile Include="Migrations\201706092346385_v1.0.22.Designer.cs">
+      <DependentUpon>201706092346385_v1.0.22.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AtendimentoRepository.cs" />
@@ -403,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706080124381_v1.0.21.resx">
       <DependentUpon>201706080124381_v1.0.21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706092346385_v1.0.22.resx">
+      <DependentUpon>201706092346385_v1.0.22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

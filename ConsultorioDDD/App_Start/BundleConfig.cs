@@ -28,8 +28,8 @@ namespace ConsultorioDDD
             bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
                          "~/Scripts/bootstrap-datetimepicker.min.js"));
 
-            bundles.Add(new StyleBundle("~/bundles/datepickercss").Include(
-                     "~/Content/bootstrap-datetimepicker-build.less"));
+            //bundles.Add(new StyleBundle("~/bundles/datepickercss").Include(
+            //         "~/Content/bootstrap-datetimepicker-build.less"));
         }
     }
 }
